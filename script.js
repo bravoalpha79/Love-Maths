@@ -132,7 +132,20 @@ function displayMultiplyQuestion(operand1, operand2) {
 }
 
 function displayDivisionQuestion(operand1, operand2) {
-  document.getElementById("operand1").textContent = operand1 * (operand2 + 1);
-  document.getElementById("operand2").textContent = operand2 + 1;
+  if (operand1 % operand2 === 0) {
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+  } else if (operand2 % operand1 === 0) {
+    document.getElementById("operand1").textContent = operand2;
+    document.getElementById("operand2").textContent = operand1;
+  } else if (operand1 > operand2 === 0) {
+    document.getElementById("operand1").textContent =
+      operand1 - (operand1 % operand2);
+    document.getElementById("operand2").textContent = operand2;
+  } else {
+    document.getElementById("operand1").textContent =
+      operand2 - (operand2 % operand1);
+    document.getElementById("operand2").textContent = operand1;
+  }
   document.getElementById("operator").textContent = "/";
 }
